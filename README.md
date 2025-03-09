@@ -69,10 +69,9 @@ Click the button below to **open the notebook in Colab**:
 - Compare Replay + EWC with more advanced lifelong learning strategies.
 - Optimize buffer management for better memory efficiency.
 
-### Acknowledgements & References  
+### References  
 
-This project is based on well-established research in **incremental learning and catastrophic forgetting**.  
-The following references provide the theoretical foundation for the implemented methods:
+The following references provided the theoretical foundation for the implemented methods:
 
 - **Elastic Weight Consolidation (EWC)**
   - Kirkpatrick, J., Pascanu, R., Rabinowitz, N., et al.  
@@ -83,9 +82,4 @@ The following references provide the theoretical foundation for the implemented 
   - Robins, A.  
     ["Catastrophic Forgetting, Rehearsal, and Pseudorehearsal."](https://doi.org/10.1016/0893-6080(95)00026-6)  
     *Neural Networks, 1995.*
-    
-- **Replay + EWC (Hybrid Approach)** 
-  - De Lange, M., Aljundi, R., Masana, M., et al.  
-    ["Deep Continual Learning: A Comprehensive Review."](https://doi.org/10.1016/j.neunet.2021.12.002)  
-    *Neural Networks, 2022.*
 
