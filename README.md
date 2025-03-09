@@ -88,11 +88,11 @@ The following references provide the theoretical foundation for the implemented 
     ["Overcoming Catastrophic Forgetting in Neural Networks."](https://www.pnas.org/doi/10.1073/pnas.1611835114)  
     *Proceedings of the National Academy of Sciences (PNAS), 2017.*
 
-- **Experience Replay (Memory Buffer)**
-  - Rebuffi, S. A., Kolesnikov, A., Sperl, G., & Lampert, C. H.  
-    ["iCaRL: Incremental Classifier and Representation Learning."](https://openaccess.thecvf.com/content_cvpr_2017/html/Rebuffi_iCaRL_Incremental_Classifier_CVPR_2017_paper.html)  
-    *CVPR, 2017.*
-
+- **Experience Replay (Memory Buffer)**  
+  - Robins, A.  
+    ["Catastrophic Forgetting, Rehearsal, and Pseudorehearsal."](https://doi.org/10.1016/0893-6080(95)00026-6)  
+    *Neural Networks, 1995.*
+    
 - **Replay + EWC (Hybrid Approach)** 
   - De Lange, M., Aljundi, R., Masana, M., et al.  
     ["Deep Continual Learning: A Comprehensive Review."](https://doi.org/10.1016/j.neunet.2021.12.002)  
