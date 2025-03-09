@@ -2,53 +2,44 @@
 
 ## Overview
 This project explores **class-incremental learning** for the **German Traffic Sign Recognition Benchmark (GTSRB)**.  
-We investigate different strategies to prevent **catastrophic forgetting** when adding new traffic sign classes sequentially.
+We implement and compare strategies to mitigate **catastrophic forgetting** when introducing new traffic sign classes sequentially.
 
-The implemented approaches include:
-- **Elastic Weight Consolidation (EWC)** – Regularizes the model to preserve important parameters from previous tasks.
-- **Replay (Memory Buffer)** – Stores past samples and reuses them during training to retain knowledge.
-- **Replay + EWC (Hybrid)** – A combination of weight regularization and experience replay for improved performance.
+## Problem Statement & Approach
+Neural networks tend to **overwrite previous knowledge** when learning new classes, a phenomenon known as **catastrophic forgetting**.  
+To address this, we evaluate the following methods:
 
-The repository allows testing **EWC, Replay, and their combination** to compare their effectiveness in incremental learning.
-
-## Problem Statement
-Incremental learning presents a challenge: **how can a model learn new classes without forgetting old ones?**  
-Traditional neural networks suffer from **catastrophic forgetting**, meaning that new knowledge **overwrites previous knowledge** unless specific strategies are used.
-
-This project follows **a structured approach** to incremental learning, using:
-- **Rehearsal (Memory Buffer)** – Stores past task samples and mixes them with new training data.
-- **EWC (Elastic Weight Consolidation)** – Regularizes the network to protect key weights from previous tasks.
-- **Replay + EWC** – Merges both strategies for stronger memory retention.
+- **Elastic Weight Consolidation (EWC)** – Regularizes key model parameters to retain prior knowledge.
+- **Replay (Memory Buffer)** – Stores and reuses past samples to reinforce learning.
+- **Replay + EWC (Hybrid)** – Combines regularization with experience replay for stronger memory retention.
 
 ## Strategy Adopted
 
 ### **1️⃣ Dataset: GTSRB**
-- The dataset is **automatically downloaded** using `torchvision.datasets.GTSRB`.
-- Images are **preprocessed (resized, normalized) and loaded dynamically**.
-- Tasks are defined to incrementally introduce new traffic sign classes.
+- Automatically downloaded via `torchvision.datasets.GTSRB`.
+- Images are **preprocessed (resized, normalized) and dynamically loaded**.
+- New classes are introduced incrementally.
 
 ### **2️⃣ Incremental Learning Methods**
-We test and compare three approaches:
+We compare three approaches:
 
-#### **✔️ EWC (Elastic Weight Consolidation)**
-- Computes **Fisher Information Matrix (FIM)** to estimate parameter importance.
-- Applies **regularization loss** to prevent modifying critical weights.
-- Helps retain old knowledge **without storing old data**.
+#### **✔️ EWC**
+- Estimates parameter importance using the **Fisher Information Matrix (FIM)**.
+- Applies **regularization loss** to preserve critical weights.
+- Works without storing past data.
 
-#### **✔️ Replay (Experience Replay)**
-- Maintains a **memory buffer** of past task samples.
-- Replays stored samples during training to prevent forgetting.
+#### **✔️ Replay**
+- Stores and replays past samples to prevent forgetting.
 - Uses a **FIFO-based buffer** to manage memory constraints.
 
-#### **✔️ Replay + EWC (Hybrid)**
-- Integrates **both EWC and Replay** to maximize knowledge retention.
-- Uses **EWC to protect model parameters** while **Replay reintroduces old data**.
+#### **✔️ Replay + EWC**
+- Integrates **both EWC and Replay** for optimal retention.
+- Protects parameters while reinforcing learning with past data.
 
 ### **3️⃣ Training Process**
-- **New classes** are introduced incrementally in multiple tasks.
-- A **pretrained model** is first trained on an initial set of classes.
-- **EWC, Replay, or Replay + EWC** is applied to retain old knowledge.
-- The model is evaluated on **all encountered classes after each task**.
+- **Classes are introduced incrementally** over multiple tasks.
+- A **pretrained model** learns an initial class set.
+- **EWC, Replay, or Replay + EWC** is applied to retain past knowledge.
+- The model is **evaluated on all encountered classes after each task**.
 
 ## Results
 
